@@ -15,17 +15,32 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 48px;
 }
 
+.glow {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 620px;
+  height: 620px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123, 167, 255, 0.16) 0%, transparent 70%);
+  transition: left 0.1s linear, top 0.1s linear;
+  pointer-events: none;
+}
+
 .center {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   text-align: center;
 }
 
@@ -38,17 +53,30 @@ h1 {
   line-height: 1;
 }
 
+.tagline {
+  margin: 0 0 20px 0;
+  font-weight: 400;
+  text-transform: lowercase;
+  font-size: clamp(13px, 2vw, 16px);
+  letter-spacing: 0.02em;
+  opacity: 0.55;
+}
+
 .links {
   display: flex;
-  gap: 28px;
+  gap: clamp(18px, 5vw, 28px);
   align-items: center;
 }
 
 .social {
   color: inherit;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   line-height: 0;
   opacity: 1;
+  padding: 10px;
+  margin: -10px;
   transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -68,4 +96,11 @@ h1 {
   font-size: 12px;
   letter-spacing: 0.02em;
   opacity: 0.22;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social,
+  .glow {
+    transition: none;
+  }
 }
